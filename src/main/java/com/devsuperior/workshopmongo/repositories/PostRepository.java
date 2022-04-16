@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import com.devsuperior.workshopmongo.models.entities.Post;
 
 @Repository
-public interface PostRepository extends MongoRepository<Post, Long> {
+public interface PostRepository extends MongoRepository<Post, String> {
 
 }
