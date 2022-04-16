@@ -35,6 +35,14 @@ public class UserService {
 		repository.insert(entity);
 		return new UserDTO(entity);
 	}
+	
+	public UserDTO update(String id, UserDTO dto) {
+		Optional<User> result = repository.findById(id);
+		User entity = result.orElseThrow(() -> new ResourceNotFoundException("Objeto não encontrado"));
+		copyDtoToEntity(dto,entity);
+		entity = repository.save(entity);
+		return new UserDTO(entity);
+	}
 
 	private void copyDtoToEntity(UserDTO dto, User entity) {
 		entity.setName(dto.getName());
